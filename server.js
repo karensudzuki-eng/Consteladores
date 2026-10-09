@@ -8,22 +8,25 @@ app.set('views', './src/views');
 
 app.get('/', async (req, res) => {
   try {
+    // Intentamos consultar la tabla de terapeutas
     const { data: therapists, error } = await supabase
       .from('therapist_profiles')
       .select('*, users(full_name)');
 
-    if (error) throw error;
+    if (error) {
+      throw error;
+    }
 
-    res.render('index', { therapists });
+    res.render('index', { therapists: therapists || [] });
   } catch (err) {
     console.error('❌ Error detallado al consultar Supabase:', err.message);
-    res.status(500).send(`Error interno del servidor: ${err.message}`);
+    // Mostramos el error directamente en la pantalla para diagnosticarlo
+    res.status(500).send(`Error detallado de conexión: ${err.message}`);
   }
 });
 
 const PORT = process.env.PORT || 3000;
 
-// OBLIGATORIO: Escuchar en '0.0.0.0' para que Render detecte el puerto abierto en la nube
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
