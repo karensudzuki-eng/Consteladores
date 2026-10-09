@@ -1,5 +1,8 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import { supabase } from './src/config/supabaseClient.js';
+
+dotenv.config(); // <-- Esto es fundamental para que lea el entorno
 
 const app = express();
 
