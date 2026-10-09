@@ -7,13 +7,8 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error('Faltan las credenciales de Supabase en las variables de entorno.');
 }
 
-// Inicialización limpia y compatible con entornos en la nube
+// Configuración adaptada para saltar restricciones de red en servidores cloud
 export const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: {
-    persistSession: false,
-    autoRefreshToken: false
-  },
-  global: {
-    headers: { 'x-client-info': 'consteladores-web' },
-  },
+  auth: { persistSession: false },
+  db: { schema: 'public' }
 });
