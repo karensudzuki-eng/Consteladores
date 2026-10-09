@@ -1,10 +1,11 @@
+import path from 'path';
 import express from 'express';
 import { supabase } from './src/config/supabaseClient.js';
 
 const app = express();
 
 app.set('view engine', 'ejs');
-app.set('views', './src/views');
+app.set('views', path.join(process.cwd(), 'src', 'views'));
 
 app.get('/', async (req, res) => {
   try {
