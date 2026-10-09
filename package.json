@@ -1,0 +1,22 @@
+{
+  "name": "consteladores",
+  "version": "1.0.0",
+  "description": "Plataforma de terapeutas y constelaciones",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.x.x",
+    "dotenv": "^16.x.x",
+    "ejs": "^3.x.x",
+    "express": "^4.x.x"
+  },
+  "devDependencies": {
+    "nodemon": "^3.x.x"
+  }
+}
