@@ -23,7 +23,7 @@ app.get('/', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-// Escuchar en 0.0.0.0 es indispensable para que Render detecte el puerto abierto
+// OBLIGATORIO: Escuchar en '0.0.0.0' para que Render detecte el puerto abierto en la nube
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
