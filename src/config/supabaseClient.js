@@ -10,4 +10,9 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error('Faltan las credenciales de Supabase en las variables de entorno.');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+// Creamos el cliente asegurando compatibilidad total de red
+export const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    persistSession: false
+  }
+});
