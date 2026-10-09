@@ -7,7 +7,11 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error('Faltan las credenciales de Supabase en las variables de entorno.');
 }
 
+// Configuración robusta adaptada para saltar restricciones de red en servidores cloud
 export const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: { persistSession: false },
-  db: { schema: 'public' }
+  db: { schema: 'public' },
+  global: {
+    headers: { 'x-client-info': 'consteladores-web' }
+  }
 });
